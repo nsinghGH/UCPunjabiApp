@@ -532,7 +532,7 @@ export const vocabularyData = {
             { id:14, gender: '', punjabi:'ਅਕਸਰ', starred: false, english:'often', audioId:'voc0867'},
         ],
     },
-    "College Life, social justice & Seva ": //mod9
+    "College Life: Social Justice & Seva": //mod9
     {
         Adjectives:
             [
