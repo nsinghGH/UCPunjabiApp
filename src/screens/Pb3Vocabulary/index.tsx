@@ -53,7 +53,7 @@ const titleText = 'Punjabi 3 Vocabulary'
 const Pb3Vocabulary = () => {
   let listner: any;
 
-  //console.log('Pb3Vocabulary(), topicsData = ', topicsData)
+  //console.log('L56 Pb3Vocabulary(), topicsData = ', topicsData)
   const { navigate } = useNavigation();
 
   const onBackPress = useCallback(() => {
@@ -65,7 +65,7 @@ const Pb3Vocabulary = () => {
   }, []);
 
   const onButtonPress = (item: any) => {
-    //console.log('L69 Pb1Vocabulary, item = ', item)
+    // console.log('L69 Pb1Vocabulary, item = ', item)
     navigate(ROUTERS.Pb3VocabularyL2, {item, titleText});
   }
 
