@@ -39,7 +39,7 @@
  }
 
 const Pb3VocabularyL2 = ({ route }) => {
-  //console.log('L43 Pb1VocabularyL2(), route.params=', route.params)
+  //console.log('L42 Pb1VocabularyL2(), route.params=', route.params)
   if (route.params) {
     topic = route.params.item.topic  // this is the name of the selected vocabualry topic
     titleText = route.params.titleText 
