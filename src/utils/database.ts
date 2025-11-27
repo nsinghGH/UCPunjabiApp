@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { lettersData } from "utils/letters";
 import { soundModifiersData } from "utils/soundModifiers";
 import { vocabularyData } from "utils/vocabulary"

@@ -1,4 +1,7 @@
-apply plugin: "com.android.application"
+plugins {
+    id("com.android.application")
+    id("com.facebook.react")
+}
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -78,7 +81,15 @@ import org.apache.tools.ant.taskdefs.condition.Os
  * ]
  */
 
-apply from: "../../node_modules/react-native/react.gradle"
+react {
+    /* Folders */
+    //   The root of your project, i.e. where "package.json" lives. Default is '..'
+    // root = file("../")
+    //   The folder where the react-native NPM package is. Default is ../node_modules/react-native
+    // reactNativeDir = file("../node_modules/react-native")
+    //   The folder where the react-native Codegen package is. Default is ../node_modules/@react-native/codegen
+    // codegenDir = file("../node_modules/@react-native/codegen")
+}
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -117,6 +128,7 @@ def reactNativeArchitectures() {
 }
 
 android {
+    namespace "com.ucpunjabi"
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -272,8 +284,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.implementation
     into 'libs'
 }
-
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 
 def isNewArchitectureEnabled() {
     // To opt-in for the New Architecture, you can either:

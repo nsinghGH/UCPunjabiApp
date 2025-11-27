@@ -1,11 +1,25 @@
-rootProject.name = 'UCPunjabi'
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-include ':app'
-includeBuild('../node_modules/react-native-gradle-plugin')
+pluginManagement {
+    def version = providers.exec {
+        commandLine("node", "-e", "console.log(require('react-native/package.json').version);")
+    }.standardOutput.asText.get().trim()
+    def (_, reactNativeMinor, reactNativePatch) = version.split("-")[0].tokenize('.').collect { it.toInteger() }
 
-if (settings.hasProperty("newArchEnabled") && settings.newArchEnabled == "true") {
-    include(":ReactAndroid")
-    project(":ReactAndroid").projectDir = file('../node_modules/react-native/ReactAndroid')
-    include(":ReactAndroid:hermes-engine")
-    project(":ReactAndroid:hermes-engine").projectDir = file('../node_modules/react-native/ReactAndroid/hermes-engine')
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
 }
+
+plugins { id("com.facebook.react.settings") }
+
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    if (System.getenv("CI") != "true") {
+        ex.autolinkLibrariesFromCommand()
+    }
+}
+
+rootProject.name = 'UCPunjabi'
+include ':app'
