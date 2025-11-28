@@ -1,25 +1,13 @@
 pluginManagement {
-    def version = providers.exec {
-        commandLine("node", "-e", "console.log(require('react-native/package.json').version);")
-    }.standardOutput.asText.get().trim()
-    def (_, reactNativeMinor, reactNativePatch) = version.split("-")[0].tokenize('.').collect { it.toInteger() }
-
-    includeBuild("../node_modules/@react-native/gradle-plugin")
-
+    includeBuild("/Users/manjotsingh/workspace/UCPunjabiApp/node_modules/@react-native/gradle-plugin")
     repositories {
         mavenCentral()
         google()
         gradlePluginPortal()
     }
 }
-
 plugins { id("com.facebook.react.settings") }
-
-extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
-    if (System.getenv("CI") != "true") {
-        ex.autolinkLibrariesFromCommand()
-    }
-}
-
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex -> ex.autolinkLibrariesFromCommand() }
 rootProject.name = 'UCPunjabi'
 include ':app'
+includeBuild("/Users/manjotsingh/workspace/UCPunjabiApp/node_modules/@react-native/gradle-plugin")
